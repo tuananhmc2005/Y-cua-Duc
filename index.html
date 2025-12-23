@@ -360,21 +360,44 @@
             }
         }
     </style>
+/* ❄️ Snow effect */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    color: white;
+    font-size: 14px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 0;
+    animation-name: fallSnow;
+    animation-timing-function: linear;
+}
+
+@keyframes fallSnow {
+    from {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(110vh) translateX(var(--drift));
+        opacity: 0.3;
+    }
+}
+    
 </head>
 
 <body>
     <!-- Thông điệp chúc mừng-->
     <div class="center-message">
-        <strong>Chúc mừng 20-10</strong> <!--Sửa tiêu đề chúc mừng ở đây-->
+        <strong>Merry Christmas</strong> <!--Sửa tiêu đề chúc mừng ở đây-->
         <span id="centerText">
-            Ngày Phụ nữ Việt Nam<br> <!-- Sử lời nhắn hiển thị đầu ở đây-->
-            Mong bạn luôn rạng rỡ như những bó hoa!<br>
-            (Bạn nhớ ấn vào những hộp quà nha)
+            Giáng sinh an lành<br> <!-- Sử lời nhắn hiển thị đầu ở đây-->
+            (Em nhớ ấn vào hộp quà nha)
         </span>
     </div>
 
     <!-- Ảnh động trang trí -->
-    <img src="./assets/mewmew.gif" alt="GIF" class="center-gif" /> <!-- Thay ảnh động bên dưới -->
+    <img src="./assets/Christmas-tree.gif" alt="GIF" class="center-gif" /> <!-- Thay ảnh động bên dưới -->
 
     <!-- Hiển thị lời chúc -->
     <div class="popup" id="popup">
@@ -512,11 +535,34 @@
         setInterval(() => {
             createFallingLetter();
         }, 1000);
+        // ❄️ Snow falling
+function createSnow() {
+    const snow = document.createElement("div");
+    snow.className = "snowflake";
+    snow.textContent = "❄";
+
+    const size = Math.random() * 10 + 10;
+    snow.style.fontSize = size + "px";
+    snow.style.left = Math.random() * window.innerWidth + "px";
+    snow.style.animationDuration = (Math.random() * 5 + 5) + "s";
+    snow.style.setProperty("--drift", (Math.random() * 100 - 50) + "px");
+
+    document.body.appendChild(snow);
+
+    setTimeout(() => {
+        snow.remove();
+    }, 10000);
+}
+
+// tạo tuyết liên tục
+setInterval(createSnow, 300);
+
     </script>
 
 </body>
 
 
 </html>
+
 
 

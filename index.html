@@ -360,29 +360,7 @@
             }
         }
     </style>
-/* ❄️ Snow effect */
-.snowflake {
-    position: fixed;
-    top: -10px;
-    color: white;
-    font-size: 14px;
-    user-select: none;
-    pointer-events: none;
-    z-index: 0;
-    animation-name: fallSnow;
-    animation-timing-function: linear;
-}
 
-@keyframes fallSnow {
-    from {
-        transform: translateY(0) translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(110vh) translateX(var(--drift));
-        opacity: 0.3;
-    }
-}
     
 </head>
 
@@ -535,34 +513,13 @@
         setInterval(() => {
             createFallingLetter();
         }, 1000);
-        // ❄️ Snow falling
-function createSnow() {
-    const snow = document.createElement("div");
-    snow.className = "snowflake";
-    snow.textContent = "❄";
-
-    const size = Math.random() * 10 + 10;
-    snow.style.fontSize = size + "px";
-    snow.style.left = Math.random() * window.innerWidth + "px";
-    snow.style.animationDuration = (Math.random() * 5 + 5) + "s";
-    snow.style.setProperty("--drift", (Math.random() * 100 - 50) + "px");
-
-    document.body.appendChild(snow);
-
-    setTimeout(() => {
-        snow.remove();
-    }, 10000);
-}
-
-// tạo tuyết liên tục
-setInterval(createSnow, 300);
-
     </script>
 
 </body>
 
 
 </html>
+
 
 
 
